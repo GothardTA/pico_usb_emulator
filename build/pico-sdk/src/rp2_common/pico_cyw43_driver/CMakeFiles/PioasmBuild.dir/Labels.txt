@@ -1,0 +1,13 @@
+# Target labels
+ PioasmBuild
+# Source files and their labels
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/PioasmBuild
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/PioasmBuild.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/PioasmBuild-complete.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-build.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-configure.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-download.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-install.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-mkdir.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-patch.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-update.rule

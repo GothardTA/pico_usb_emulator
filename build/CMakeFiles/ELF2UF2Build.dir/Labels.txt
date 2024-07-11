@@ -1,0 +1,13 @@
+# Target labels
+ ELF2UF2Build
+# Source files and their labels
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/CMakeFiles/ELF2UF2Build
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/CMakeFiles/ELF2UF2Build.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/CMakeFiles/ELF2UF2Build-complete.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-build.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-configure.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-download.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-install.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-mkdir.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-patch.rule
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-update.rule

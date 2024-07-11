@@ -1,0 +1,3 @@
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/pioasm/CMakeFiles/pioasm.dir
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/pioasm/CMakeFiles/edit_cache.dir
+/media/trooper/1TB_NVME/Code-Projects/Pico/keyboard_testing/build/pioasm/CMakeFiles/rebuild_cache.dir
