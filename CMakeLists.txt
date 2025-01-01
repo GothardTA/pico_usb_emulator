@@ -9,57 +9,55 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Initialise pico_sdk from installed location
 # (note this can come from environment, CMake cache etc)
 
-# == DO NEVER EDIT THE NEXT LINES for Raspberry Pi Pico VS Code Extension to work ==
+# == DO NOT EDIT THE FOLLOWING LINES for the Raspberry Pi Pico VS Code Extension to work ==
 if(WIN32)
-   set(USERHOME $ENV{USERPROFILE})
+    set(USERHOME $ENV{USERPROFILE})
 else()
     set(USERHOME $ENV{HOME})
 endif()
-set(PICO_SDK_PATH ${USERHOME}/.pico-sdk/sdk/1.5.1)
-set(PICO_TOOLCHAIN_PATH ${USERHOME}/.pico-sdk/toolchain/13_2_Rel1)
-if(WIN32)
-    set(pico-sdk-tools_DIR ${USERHOME}/.pico-sdk/tools/1.5.1)
-    include(${pico-sdk-tools_DIR}/pico-sdk-tools-config.cmake)
-    include(${pico-sdk-tools_DIR}/pico-sdk-tools-config-version.cmake)
+set(sdkVersion 2.1.0)
+set(toolchainVersion 13_3_Rel1)
+set(picotoolVersion 2.1.0)
+set(picoVscode ${USERHOME}/.pico-sdk/cmake/pico-vscode.cmake)
+if (EXISTS ${picoVscode})
+    include(${picoVscode})
 endif()
 # ====================================================================================
-set(PICO_BOARD pico CACHE STRING "Board type")
+set(PICO_BOARD pico_w CACHE STRING "Board type")
 
 # Pull in Raspberry Pi Pico SDK (must be before project)
 include(pico_sdk_import.cmake)
 
-if (PICO_SDK_VERSION_STRING VERSION_LESS "1.4.0")
-  message(FATAL_ERROR "Raspberry Pi Pico SDK version 1.4.0 (or later) required. Your version is ${PICO_SDK_VERSION_STRING}")
-endif()
-
-project(keyboard_testing C CXX ASM)
+project(keyboard_test C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(keyboard_testing keyboard_testing.cpp usb_descriptors.c)
+add_executable(keyboard_test keyboard_test.c usb_descriptors.c)
 
-pico_set_program_name(keyboard_testing "keyboard_testing")
-pico_set_program_version(keyboard_testing "0.1")
+pico_set_program_name(keyboard_test "keyboard_test")
+pico_set_program_version(keyboard_test "0.1")
 
 # Modify the below lines to enable/disable output over UART/USB
-pico_enable_stdio_uart(keyboard_testing 1)
-pico_enable_stdio_usb(keyboard_testing 0)
+pico_enable_stdio_uart(keyboard_test 0)
+pico_enable_stdio_usb(keyboard_test 0)
 
 # Add the standard library to the build
-target_link_libraries(keyboard_testing
+target_link_libraries(keyboard_test
         pico_stdlib
-        tinyusb_device
-        )
+        tinyusb_device)
 
 # Add the standard include files to the build
-target_include_directories(keyboard_testing PRIVATE
+target_include_directories(keyboard_test PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
-  ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts or any other standard includes, if required
-  ${USERHOME}/.pico-sdk/sdk/1.5.1/lib/tinyusb/src
 )
 
-pico_add_extra_outputs(keyboard_testing)
+# Add any user requested libraries
+target_link_libraries(keyboard_test 
+        
+        )
+
+pico_add_extra_outputs(keyboard_test)
 

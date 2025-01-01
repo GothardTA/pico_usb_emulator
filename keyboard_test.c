@@ -1,7 +1,5 @@
-#include <stdio.h>
-#include "pico/stdlib.h"
-#include <string>
-#include "tusb.h"
+#include <pico/stdlib.h>
+#include <tusb.h>
 
 
 // Interface index depends on the order in configuration descriptor
@@ -10,11 +8,21 @@ enum {
   ITF_MOUSE = 1
 };
 
-int getUSBKeyCodeModifier(char letter) {
-    std::string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"~<>?";
+int find(const char* string, int length, char letter) {
+  for (int i = 0; i < length; i++) {
+    if (string[i] == letter) {
+      return i;
+    }
+  }
 
-    size_t location = alphabet.find(letter);
-    if (location != std::string::npos) {
+  return -1;
+}
+
+int getUSBKeyCodeModifier(char letter) {
+    const char* alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:\"~<>?";
+
+    int location = find(alphabet, 48, letter);
+    if (location != -1) {
       return 0xe1; // left shift key code
     }
 
@@ -22,15 +30,15 @@ int getUSBKeyCodeModifier(char letter) {
 }
 
 int getUSBKeyCode(char letter) {
-    std::string alphabet1 = "abcdefghijklmnopqrstuvwxyz1234567890\naaa -=[]\\a;'`,./";
-    std::string alphabet2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()\naaa _+{}|a:\"~<>?";
+    const char* alphabet1 = "abcdefghijklmnopqrstuvwxyz1234567890\naaa -=[]\\a;'`,./";
+    const char* alphabet2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()\naaa _+{}|a:\"~<>?";
 
-    size_t location = alphabet1.find(letter);
-    if (location != std::string::npos) {
+    int location = find(alphabet1, 53, letter);
+    if (location != -1) {
       return location + 4;
     }
-    location = alphabet2.find(letter);
-    if (location != std::string::npos) {
+    location = find(alphabet2, 53, letter);
+    if (location != -1) {
       return location + 4;
     }
 
@@ -43,7 +51,7 @@ void send_keystroke(uint key1, uint modifier) {
     keycode[0] = modifier;
     keycode[1] = key1;
     tud_hid_n_keyboard_report(ITF_KEYBOARD, 0, 0, keycode);
-    sleep_ms(10);
+    sleep_ms(8);
     tud_task();
 }
 
@@ -54,7 +62,7 @@ void send_keystroke_NULL() {
     // }
     // gpio_put(16, 0);
     tud_hid_n_keyboard_report(ITF_KEYBOARD, 0, 0, NULL);
-    sleep_ms(10);
+    sleep_ms(8);
     tud_task();
 }
 
@@ -74,7 +82,8 @@ int main(void) {
 
     bool buttonPressed = false;
 
-    std::string command = "https://www.youtube.com/watch?v=dQw4w9WgXcQ/\n";
+    const char* command = "https://www.youtube.com/watch?v=dQw4w9WgXcQ/\n";
+    int length = 45;
 
     while (1)
     {
@@ -87,7 +96,7 @@ int main(void) {
         }
 
         if ( tud_hid_n_ready(ITF_KEYBOARD) && buttonPressed ) {
-            for (int i = 0; i < command.length(); i++) {
+            for (int i = 0; i < length; i++) {
                 gpio_put(LED_PIN, 1);
                 int code = getUSBKeyCode(command[i]);
                 if (code == -1) { continue; }
